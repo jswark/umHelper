@@ -1,7 +1,7 @@
 import random
-import pymysql
 import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
+from sqlRequests import *
 
 test_chat_id = 1
 PF_chat_id = 2
@@ -21,8 +21,3 @@ def getVKGroupAPI(longPoll = False):
 	else:
 		longpoll = VkBotLongPoll(vk_session, "ID сообщества")
 		return vkGroupAPI, longpoll
-
-def getMysqlConnector():
-	con = pymysql.connect(host = "хост базы", user = "имя пользователя", password = "пароль пользователя", db = "название базы данных")
-	cur = con.cursor()
-	return con, cur
