@@ -4,4 +4,9 @@ con = pymysql.connect(host = "хост базы", user = "имя пользов�
 cur = con.cursor()
 
 def getUserGroup(userID):
-	print(userID)
+	cur.execute("SELECT `userGroup` FROM `users` WHERE `ID` = " + str(userID))
+	res = cur.fetchone()
+	if (res == None):
+		return None
+	else:
+		return res[0]
