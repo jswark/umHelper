@@ -29,4 +29,7 @@ def helpCommandModuleStart():
 					groupAPI.messages.send(peer_id = userID, random_id = rnd, message = ans)
 
 if (__name__ == "__main__"):
-	helpCommandModuleStart()
+	try:
+		helpCommandModuleStart()
+	except:
+		helpCommandModuleStart()
