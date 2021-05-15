@@ -33,6 +33,20 @@ con.connect((err) => {
 		}
 	});
 
+	app.post("/functions/:method", jsonParser, (req, res) => {
+		if (req.params["method"] == "generateCode") {
+			var code = system.generateString(8);
+			var startTime = system.getDate();
+			con.query("INSERT INTO `authCodes` VALUES(NULL, \"" + code + "\", \"" + startTime + "\", 0)", (err, data) => {
+				if (err) {
+					system.errorLog(err);
+					return res.json({"status": "error", "msg": "Внутренняя ошибка сервера!"});
+				}
+				return res.json({"status": "ok", "response": code});
+			});
+		}
+	});
+
 	app.listen(config.port, () => {
 		console.log("Server works at port " + config.port);
 	});
