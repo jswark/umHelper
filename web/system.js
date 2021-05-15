@@ -9,6 +9,6 @@ module.exports.getCookie = (headers) => {
 	return cookies;
 }
 
-module.exports.errorLog = function(msg) => {
+module.exports.errorLog = (msg) => {
 	console.log(msg);
 }
